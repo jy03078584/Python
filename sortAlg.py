@@ -44,7 +44,7 @@ def quickBySlice1(data):
     return leftData + rightData
 
 
-# 依然是借助slice 但拼接python列表推导特性 代码更加简单
+# 依然是借助slice 但凭借python列表推导特性 代码更加简洁
 # 参考：tobe https://github.com/tobegit3hub
 def quickBySlice2(data):
     if len(data) <= 1:
