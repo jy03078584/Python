@@ -26,18 +26,21 @@ def sshAdd():
     SSH_AGENT_PID=6052; export SSH_AGENT_PID;
     echo Agent pid 6052;
     '''
-    process = subprocess.run('ssh-agent', stdout=subprocess.PIPE, encoding='utf-8')
+    process = subprocess.run(
+        'ssh-agent', stdout=subprocess.PIPE, encoding='utf-8')
 
     # 从stdout获取SSH_AUTH_SOCK SSH_AGENT_PID
-    pattern = re.compile('SSH_AUTH_SOCK=([^;]+).*SSH_AGENT_PID=(\d+).*', re.DOTALL)
+    pattern = re.compile(
+        'SSH_AUTH_SOCK=([^;]+).*SSH_AGENT_PID=(\d+).*', re.DOTALL)
     match = pattern.search(process.stdout)
-    
+
     # 设置对应的系统环境(真正的启动了ssh-agent)
     os.environ['SSH_AUTH_SOCK'] = match.group(1)
     os.environ['SSH_AGENT_PID'] = match.group(2)
 
     # 执行ssh-add
     subprocess.run(r'ssh-add -k [rsa path]')
+
 
 if __name__ == '__main__':
     sshAdd()
