@@ -1,25 +1,11 @@
-#user can give input now
-#python3
+n = int(input("Enter the required range : "))  # user input
+list = []
 
-import sys
-
-if sys.version_info[0]==2:
-    version=2
+if (n < 0):
+    print("Not a valid number, please enter a positive number!")
 else:
-    version=3 
+    for i in range(0,n+1):
+        if(i%2==0):
+            list.append(i)          #appending items to the initialised list getting from the 'if' statement
 
-if version==2:
-    n=input('Enter number of even numbers to print: ')
-    printed=0
-    numbers=0
-    while printed!=n:
-        if numbers%2==0:
-            print numbers,
-            printed+=1
-        numbers+=1
-
-if version==3:
-    print ([x for x in range(int(input()),int(input())) if not x%2])
-
-
-
+print(list)

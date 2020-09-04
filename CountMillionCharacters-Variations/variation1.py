@@ -1,7 +1,10 @@
-import sys
+try:
+    input = raw_input
+except NameError:
+    pass
 
 
-def countchars(filename):
+def count_chars(filename):
     count = {}
 
     with open(filename) as info:  # inputFile Replaced with filename
@@ -11,11 +14,19 @@ def countchars(filename):
 
     return count
 
-if __name__ == '__main__':
-    if sys.version_info.major >= 3:  # if the interpreter version is 3.X, use 'input',
-        input_func = input           # otherwise use 'raw_input'
-    else:
-        input_func = raw_input
 
-    inputFile = input_func("File Name : ")
-    print(countchars(inputFile))
+def main():
+    is_exist = True
+    # Try to open file if exist else raise exception and try again
+    while (is_exist):
+        try:
+            inputFile = input("File Name / (0)exit : ").strip()
+            if inputFile == "0":
+                break
+            print(count_chars(inputFile))
+        except FileNotFoundError:
+            print("File not found...Try again!")
+
+
+if __name__ == '__main__':
+    main()

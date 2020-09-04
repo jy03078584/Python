@@ -1,4 +1,5 @@
 .idea
+<<<<<<< HEAD
 .DS_Store
 *.iml
 */target
@@ -24,3 +25,6 @@ __pycache__/
 
 **.log*
 venv/
+=======
+*.pyc
+>>>>>>> 8845df25c9b5a6ae1844949f1f3ff43a9056ee77
